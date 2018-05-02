@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+{% load static %}
+<!-- this static template tag generates absolute url of static files-->
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css'%}" />
+{%if latest_question_list %}
+<ul>
+	{% for question in latest_question_list%}
+	<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+	<!--polls:detail helps differentiating which app to use-->
+	{%endfor%}
+</ul>
+{% else %}
+<p>no polls are available</p>>
+{%endif%}
+</body>
+</html>>
